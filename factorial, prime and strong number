@@ -1,0 +1,62 @@
+
+#include <iostream>
+int fact(int n);
+bool isPrime(int n);
+bool isStrong(int n);
+
+int main()
+{using namespace std;
+int a,n;
+
+    cout<<"What do you want to find \n1. Factorial\n2. Prime number\n3. Strong number"<<endl;
+cin>>a;
+cout<<"Enter the number"<<endl;
+cin>>n;
+
+if(a==1)
+cout<<"The factorial of "<<n<<" is : "<<fact(n)<<endl; 
+else if(a==2){
+    if(isPrime(n))
+    cout<<"It is prime number"<<endl;
+    else
+    cout<<"It is not a prime number"<<endl;
+}
+else if(a==3){
+    if(isStrong(n))
+    cout<<"It is strong number"<<endl;
+    else
+    cout<<"It is not a strong numer"<<endl;
+
+}
+else
+cout<<"Invalid choice"<<endl;
+}
+int fact(int n){
+    int a=1;
+    for(int i=1;i<=n;i++){
+       a*=i; 
+    }
+    return a;
+}
+bool isPrime(int n){
+    int ct=0;
+    for(int i=1;i<n;i++){
+        if(n%i==0)
+        ct++;
+    }
+    if(ct==1)
+    return true;
+    else 
+    return false;
+}
+bool isStrong(int n){
+    int a=n,sm=0;
+    while(a>0){
+        sm+=fact(a%10);
+        a/=10;
+    }
+    if(n==sm)
+    return true;
+    else 
+    return false;
+}
